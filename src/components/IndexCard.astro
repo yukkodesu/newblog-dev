@@ -1,0 +1,26 @@
+---
+import { Image } from "@astrojs/image/components";
+export interface Props {
+  link: string;
+  title: string;
+  text: string;
+  imgSrc: string;
+}
+const { link, title, text, imgSrc } = Astro.props;
+---
+
+<a href={link}>
+  <div
+    class="rounded-2xl shadow-sm p-6 w-full border-gray-200 border hover:scale-105 transition-all duration-200 flex flex-col"
+  >
+    <Image
+      class={"rounded-md p-1 select-none"}
+      src={imgSrc}
+      alt={`${text} icon`}
+      width={50}
+      height={50}
+    />
+    <h2 class="text-sm mt-2 text-gray-800">{title}</h2>
+    <p class="mb-4 text-sm text-gray-700">{text}</p>
+  </div>
+</a>
