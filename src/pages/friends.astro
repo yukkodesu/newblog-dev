@@ -1,0 +1,84 @@
+---
+import FriendCard from "../components/FriendCard.astro";
+import Layout from "../layouts/Layout.astro";
+let delay = 0;
+const getDelay = () => ++delay / 10;
+const friends = [
+  {
+    link: "https://blog.vonbrank.com/",
+    title: "Von Brank",
+    text: "code, video edit, design",
+    imgSrc: "https://avatars.githubusercontent.com/u/50048094?v=4",
+  },
+  {
+    link: "https://blog.vonbrank.com/",
+    title: "GoldenPotato",
+    text: "LLer/ACMer/数院/炼丹",
+    imgSrc: "https://s2.loli.net/2022/01/07/yFV76CiNBo4ZfYw.jpg",
+  },
+  {
+    link: "https://lizbaka.moe/",
+    title: "lizbaka",
+    text: "或许是个死宅？",
+    imgSrc: "https://s2.loli.net/2022/01/07/i4SNf7nXHWtxIp5.jpg",
+  },
+  {
+    link: "https://blog.eastonman.com/",
+    title: "EastonMan",
+    text: "临渊羡鱼，不如退而结网",
+    imgSrc: "https://avatars.githubusercontent.com/u/19954398?v=4",
+  },
+  {
+    link: "https://nullptr.icu/",
+    title: "Nullptr",
+    text: "",
+    imgSrc: "https://avatars.githubusercontent.com/u/52071314",
+  },
+  {
+    link: "http://dvd.moe/",
+    title: "dvdvd",
+    text: "某碟片",
+    imgSrc:
+      "https://dvd.moe/img/DVD_2022_New_Year/DVD_2022_New_Year_thumbnail.png",
+  },
+  {
+    link: "https://cynosura.one/",
+    title: "froseiun",
+    text: "特别爱折腾",
+    imgSrc: "https://avatars.githubusercontent.com/u/46548406?v=4",
+  },
+  {
+    link: "https://akr.moe",
+    title: "akarachen",
+    text: "",
+    imgSrc:
+      "https://akr.moe/_next/image?url=https%3A%2F%2Fgithub.com%2Fakarachen.png&w=256&q=75",
+  },
+];
+---
+
+<Layout title="Yukkoのお友達">
+  <div class="mx-auto w-full h-screen justify-center">
+    <header class="flex p-6 px-8 lg:px-40 border-b border-solid border-gray-300 flex justify-between">
+      <h1 class="text-xl">Friends</h1>
+      <a href="/"><h1 class="text-xl">Go Back</h1></a>
+    </header>
+    <main>
+      <div
+        class="container mx-auto py-4 px-6 max-w-max grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-cols-max gap-4"
+      >
+        {
+          friends.map((friend) => (
+            <FriendCard
+              style={{ animationDelay: `${getDelay()}s` }}
+              link={friend.link}
+              imgSrc={friend.imgSrc}
+              title={friend.title}
+              text={friend.text}
+            />
+          ))
+        }
+      </div>
+    </main>
+  </div>
+</Layout>

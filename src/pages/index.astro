@@ -1,81 +1,47 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "@astrojs/image/components";
+import avatar from "../images/avatar.png";
+import github from "../images/Index/github.png";
+import friend from "../images/Index/friend.png";
+import blog from "../images/Index/blog.png";
+import hitszlug from "../images/Index/hitszlug.svg";
+import IndexCard from "../components/IndexCard.astro";
+import "@fontsource/noto-sans-sc";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout title="Yukkoの部屋">
+  <div class="mx-auto w-full h-screen flex justify-center">
+    <main class="py-16 px-4 flex flex-col gap-10">
+      <div class="flex flex-col justify-center gap-8">
+        <Image
+          class:list={["rounded-full"]}
+          src={avatar}
+          alt="icon"
+          height={120}
+          width={120}
+        />
+        <div>
+          <h1
+            class="text-3xl font-bold tracking-wide text-gray-800 hover:text-text-pink transition-colors duration-200"
+          >
+            Yukkoの部屋
+          </h1>
+          <span class="text-md text-gray-700">Keep Learning</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-6">
+        <IndexCard imgSrc={github} link="https://github.com/yukkodesu" title="GitHub" text="@yukkodesu"/>
+        <IndexCard imgSrc={blog} link="/blogs" title="Blogs" text="记录一些好玩的事情"/>
+        <IndexCard imgSrc={friend} link="/friends" title="Friends" text="好朋友的友链"/>
+        <IndexCard imgSrc={hitszlug} link="https://lug.pub" title="HITsz LUG" text="好多爱好Linux的大佬们"/>
+      </div>
+    </main>
+  </div>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  h1 {
+    font-family: "Noto Sans JP";
+  }
 </style>

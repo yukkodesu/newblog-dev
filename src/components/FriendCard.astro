@@ -1,0 +1,35 @@
+---
+import { Image } from "@astrojs/image/components";
+export interface Props {
+  link: string;
+  imgSrc: string;
+  title: string;
+  text: string;
+  style: { animationDelay: string };
+}
+const { link, imgSrc, title, text, style } = Astro.props;
+import "animate.css";
+---
+
+<a href={link} target="_blank">
+  <div style={style} class="animate__animated animate__bounceIn">
+    <div
+      class="p-4 h-full flex items-center gap-4 hover:bg-bg-pink hover:scale-105 rounded-2xl transition-all duration-200"
+    >
+      <div>
+        <Image
+          class="rounded-full"
+          src={imgSrc}
+          alt={`${title} icon`}
+          width={60}
+          height={60}
+          format={"png"}
+        />
+      </div>
+      <div>
+        <p class="text-gray-800">{title}</p>
+        <span class="text-gray-700 text-sm">{text}</span>
+      </div>
+    </div>
+  </div>
+</a>
